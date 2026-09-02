@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="620" viewBox="0 0 1320 620" role="img">
+  <title>Share of transactions the categorization agent handles on its own — around 90% before rollout, 99 to 100% today</title>
+  <rect x="6" y="6" width="1308" height="608" rx="6" fill="#FFFFFF"/>
+
+  <line x1="150" y1="470" x2="1228" y2="470" stroke="#E4E6EB" stroke-width="1"/>
+  <line x1="150" y1="375" x2="1228" y2="375" stroke="#E4E6EB" stroke-width="1"/>
+  <line x1="150" y1="280" x2="1228" y2="280" stroke="#E4E6EB" stroke-width="1"/>
+  <line x1="150" y1="185" x2="1228" y2="185" stroke="#E4E6EB" stroke-width="1"/>
+  <line x1="150" y1="90" x2="1228" y2="90" stroke="#E4E6EB" stroke-width="1"/>
+  <line x1="150" y1="470" x2="1228" y2="470" stroke="#C5A880" stroke-width="1.5"/>
+  <line x1="591" y1="74" x2="591" y2="470" stroke="#C5A880" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="601" y="86" text-anchor="start" font-family="'Space Mono', ui-monospace, Menlo, Consolas, monospace" font-size="10" fill="#281350" letter-spacing="1">AGENT ROLLOUT</text>
+  <text x="150" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Oct</text>
+  <text x="248" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Nov</text>
+  <text x="346" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Dec</text>
+  <text x="444" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Jan</text>
+  <text x="542" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Feb</text>
+  <text x="640" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Mar</text>
+  <text x="738" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Apr</text>
+  <text x="836" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">May</text>
+  <text x="934" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Jun</text>
+  <text x="1032" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Jul</text>
+  <text x="1130" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Aug</text>
+  <text x="1228" y="500" text-anchor="middle" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#281350" fill-opacity="0.5">Sep</text>
+  <polyline points="150.0,351.2 248.0,422.5 346.0,303.8 444.0,303.8 542.0,327.5 640.0,161.2 738.0,161.2 836.0,161.2 934.0,208.8 1032.0,137.5 1130.0,113.8 1228.0,90.0" fill="none" stroke="#5F2EE5" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="150.0" cy="351.2" r="4" fill="#5F2EE5"/>
+  <circle cx="248.0" cy="422.5" r="4" fill="#5F2EE5"/>
+  <circle cx="346.0" cy="303.8" r="4" fill="#5F2EE5"/>
+  <circle cx="444.0" cy="303.8" r="4" fill="#5F2EE5"/>
+  <circle cx="542.0" cy="327.5" r="4" fill="#5F2EE5"/>
+  <circle cx="640.0" cy="161.2" r="4" fill="#5F2EE5"/>
+  <circle cx="738.0" cy="161.2" r="4" fill="#5F2EE5"/>
+  <circle cx="836.0" cy="161.2" r="4" fill="#5F2EE5"/>
+  <circle cx="934.0" cy="208.8" r="4" fill="#5F2EE5"/>
+  <circle cx="1032.0" cy="137.5" r="4" fill="#5F2EE5"/>
+  <circle cx="1130.0" cy="113.8" r="4" fill="#5F2EE5"/>
+  <circle cx="1228.0" cy="90.0" r="4" fill="#5F2EE5"/>
+  <text x="180" y="150" text-anchor="start" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#281350" fill-opacity="0.55">Before the agent</text>
+  <text x="180" y="178" text-anchor="start" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#281350" fill-opacity="0.55">around 90% categorised automatically</text>
+  <text x="900" y="392" text-anchor="start" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="600" fill="#5F2EE5">Today</text>
+  <text x="900" y="420" text-anchor="start" font-family="'Euclid Circular B', Euclid, 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#5F2EE5">99–100% categorised automatically</text>
+</svg>

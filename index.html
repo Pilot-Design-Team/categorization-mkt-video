@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categorization — Meridian video assets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Meridian brand tokens ─────────────────────────────────────── */
+  :root {
+    --ocean-abyss-black:  #0A1128;
+    --deep-ocean-ink:     #281350;
+    --pilot-purple:       #5F2EE5;
+    --compass-brass:      #C5A880;
+    --sea-mist-white:     #F9FAFC;
+    --bright-white:       #FFFFFF;
+    --atmospheric-gray:   #F1F3F5;
+    --success-sage:       #2C5D3A;
+    --success-light:      #E9F1EB;
+    --info-slate:         #1E3A47;
+
+    /* Euclid Circular B is a commercial licence and is not redistributed here.
+       It renders for anyone who has it installed; others get the fallbacks.
+       The videos and stills already have it rendered in. */
+    --font-primary: 'Euclid Circular B', 'Avenir Next', 'Century Gothic', 'Helvetica Neue', Arial, sans-serif;
+    --font-serif:   'Aleo', Georgia, serif;
+    --font-mono:    'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    --space-xs: 8px;  --space-sm: 16px; --space-md: 24px;
+    --space-lg: 32px; --space-xl: 48px; --space-xxl: 64px;
+  }
+
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-primary);
+    color: var(--deep-ocean-ink);
+    background: var(--atmospheric-gray);
+    line-height: 1.6;
+    padding: var(--space-xl);
+  }
+
+  .page { max-width: 1320px; margin: 0 auto; }
+
+  /* ── Page head ──────────────────────────────────────────────────── */
+  .page-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: var(--space-lg); margin-bottom: var(--space-xl);
+  }
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem; font-weight: 700; line-height: 1.2;
+    color: var(--deep-ocean-ink);
+  }
+  .page-sub {
+    font-size: 1rem; color: var(--info-slate); margin-top: 4px; max-width: 62ch;
+  }
+
+  /* ── BaseButton, reproduced from the Pilot design system ──────────
+     design-system/buttons/base-button/base-button.vue, variant "primary".
+     Token values resolved from client/css/_colors.scss on trunk:
+       $brandColorPrimary          -> --color-pilot-purple          #4e24b0
+       $brandColorPrimaryContrast  -> #fff
+       $pilotPurpleMedium          -> --color-pilot-purple-medium   #3b1b7e
+       $borderRadiusMedium 4px  ·  $fontSizeBase 15px
+     Do not restyle — this is DS-owned.                              */
+  .button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid #4e24b0;
+    border-radius: 4px;
+    color: #4e24b0;
+    cursor: pointer;
+    display: inline-grid;
+    font-family: var(--font-primary);
+    font-size: 15px;
+    grid-auto-columns: minmax(auto, max-content);
+    grid-auto-flow: column;
+    justify-content: center;
+    line-height: inherit;
+    padding: 8px 32px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.1s;
+    user-select: none;
+  }
+  .button.primary {
+    background: #4e24b0;
+    border-color: transparent;
+    color: #fff;
+  }
+  .button.primary:hover,
+  .button.primary:focus { background: #3b1b7e; }
+  .button.primary:active { background: #3b1b7e; }
+
+
+  /* ── Chart block ────────────────────────────────────────────────── */
+  .chart-block + .chart-block { margin-top: var(--space-xxl); }
+
+  .chart-title {
+    font-family: var(--font-primary);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--deep-ocean-ink);
+    margin-bottom: var(--space-sm);
+  }
+
+  /* No-line nesting: separation comes from the background shift, not a rule. */
+  .chart-card {
+    background: var(--bright-white);
+    border: 1px solid var(--atmospheric-gray);
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 8px 24px rgba(40, 19, 80, 0.04);
+  }
+  .chart-card-head {
+    background: var(--sea-mist-white);
+    padding: var(--space-sm) var(--space-md);
+    display: flex; align-items: center;
+    gap: var(--space-md); flex-wrap: wrap;
+  }
+  /* With tabs the head bottom-aligns so the DS underline sits flush with its edge. */
+  .chart-card-head.has-tabs { align-items: flex-end; padding-bottom: 0; }
+  /* One auto margin only, or the free space gets split between them:
+     no tabs -> path sits left, button right. With tabs -> path and button
+     travel together on the right, tabs on the left. */
+  .chart-card-head .button { margin-left: auto; }
+  .chart-card-head.has-tabs .chart-path { margin-left: auto; }
+  .chart-card-head.has-tabs .button { margin-left: 0; }
+
+  /* ── Tabs, reproduced from the Pilot design system ────────────────
+     design-system/navigation/tabs/tabs.vue. Token values from
+     client/css/_colors.scss on trunk:
+       $borderColorLighter   #eff0f3   $brandColorPrimary  #4e24b0
+       $contentColorTertiary #5a5f6b   $contentColorPrimary #25293b
+     Do not restyle — this is DS-owned.                              */
+  .tabs { display: flex; justify-content: flex-start; position: relative; }
+  .tabs::after {
+    border-bottom: 2px solid #eff0f3; bottom: 0; content: " ";
+    left: 0; position: absolute; right: 0; z-index: 0;
+  }
+  .tab {
+    background: none; border: 0; border-bottom: 2px solid transparent;
+    color: #5a5f6b; cursor: pointer;
+    font-family: var(--font-primary); font-size: 0.9rem;
+    padding: 0 15px 15px; position: relative; text-align: center;
+    transition: border-bottom-color 0.1s ease-in-out; z-index: 1;
+  }
+  .tab:first-of-type { padding-left: 0; }
+  .tab.tab-active { color: #25293b; font-weight: 600; }
+  .tab.tab-active::after {
+    background-color: #4e24b0; bottom: -2px; content: "";
+    height: 2px; left: 15px; position: absolute; right: 15px;
+  }
+  .tab.tab-active:first-of-type::after { left: 0; }
+  .panel[hidden] { display: none; }
+  .chart-path {
+    font-family: var(--font-mono); font-size: 0.75rem;
+    color: var(--compass-brass);
+    overflow-wrap: anywhere;
+  }
+  .chart-card-body {
+    padding: var(--space-lg) var(--space-md);
+    display: flex; justify-content: center;
+  }
+  .chart-card-body img { width: 100%; max-width: 1240px; height: auto; display: block; }
+  .chart-card-body video { width: 100%; max-width: 1240px; height: auto; display: block; }
+  .chart-card + .chart-card { margin-top: var(--space-sm); }
+
+  @media (max-width: 720px) {
+    body { padding: var(--space-md); }
+    .page-head { flex-direction: column; }
+  }
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="page-head">
+    <div>
+      <h1 class="page-title">Categorization</h1>
+      <p class="page-sub">Chart assets for the Categorization video, drawn in Meridian brand style. Each card opens on the video; the SVG or PNG is one tab away.</p>
+    </div>
+  </header>
+
+  <section class="chart-block">
+    <h2 class="chart-title">How categorization recognizes an inter-entity transfer</h2>
+    <article class="chart-card">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Video</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">SVG</button>
+        </div>
+        <span class="chart-path">video/categorization-inter-entity-transfer.mp4</span>
+        <a class="button primary" href="video/categorization-inter-entity-transfer.mp4" download="categorization-inter-entity-transfer.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/categorization-inter-entity-transfer.mp4" data-href="video/categorization-inter-entity-transfer.mp4" data-dl="categorization-inter-entity-transfer.mp4" data-label="Download .mp4">
+          <video src="video/categorization-inter-entity-transfer.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="panel" hidden data-path="charts/categorization-inter-entity-transfer.svg" data-href="charts/categorization-inter-entity-transfer.svg" data-dl="categorization-inter-entity-transfer.svg" data-label="Download .svg">
+          <img src="charts/categorization-inter-entity-transfer.svg"
+             alt="Flow diagram: $25,000 cash out of Entity A operating goes to the categorization agent, which checks account history against owner loan, inter-entity and equity accounts; only the inter-entity account matches, so the entry books to Due from Entity B on the balance sheet rather than the P&amp;L.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">How categorization catches a prepaid expense</h2>
+    <article class="chart-card">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Video</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">SVG</button>
+        </div>
+        <span class="chart-path">video/categorization-prepaid-amortization.mp4</span>
+        <a class="button primary" href="video/categorization-prepaid-amortization.mp4" download="categorization-prepaid-amortization.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/categorization-prepaid-amortization.mp4" data-href="video/categorization-prepaid-amortization.mp4" data-dl="categorization-prepaid-amortization.mp4" data-label="Download .mp4">
+          <video src="video/categorization-prepaid-amortization.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="panel" hidden data-path="charts/categorization-prepaid-amortization.svg" data-href="charts/categorization-prepaid-amortization.svg" data-dl="categorization-prepaid-amortization.svg" data-label="Download .svg">
+          <img src="charts/categorization-prepaid-amortization.svg"
+             alt="Flow diagram: a vendor billed $149 in Jun, Jul and Aug, then $1,788 in Sep — 12× the pattern. The categorization agent detects the pattern break and books it to prepaid software on the balance sheet, where a twelve-month supporting schedule releases $149 to expense each month.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">What the agent reads, and where the transaction lands</h2>
+    <article class="chart-card">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Video</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">SVG</button>
+        </div>
+        <span class="chart-path">video/categorization-context-and-outcomes.mp4</span>
+        <a class="button primary" href="video/categorization-context-and-outcomes.mp4" download="categorization-context-and-outcomes.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/categorization-context-and-outcomes.mp4" data-href="video/categorization-context-and-outcomes.mp4" data-dl="categorization-context-and-outcomes.mp4" data-label="Download .mp4">
+          <video src="video/categorization-context-and-outcomes.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="panel" hidden data-path="charts/categorization-context-and-outcomes.svg" data-href="charts/categorization-context-and-outcomes.svg" data-dl="categorization-context-and-outcomes.svg" data-label="Download .svg">
+          <img src="charts/categorization-context-and-outcomes.svg"
+             alt="Diagram: a cash-out transaction from the bank feed flows into the categorization agent, which also reads client policies, vendor history, supporting schedules and the balance sheet. The agent resolves the meaning and the transaction lands as an expense, a bill payment, a prepaid, a liability clearing, or a balance-sheet entry.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Share of transactions the agent categorizes on its own</h2>
+    <article class="chart-card">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Video</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">SVG</button>
+        </div>
+        <span class="chart-path">video/categorization-auto-rate.mp4</span>
+        <a class="button primary" href="video/categorization-auto-rate.mp4" download="categorization-auto-rate.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/categorization-auto-rate.mp4" data-href="video/categorization-auto-rate.mp4" data-dl="categorization-auto-rate.mp4" data-label="Download .mp4">
+          <video src="video/categorization-auto-rate.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="panel" hidden data-path="charts/categorization-auto-rate.svg" data-href="charts/categorization-auto-rate.svg" data-dl="categorization-auto-rate.svg" data-label="Download .svg">
+          <img src="charts/categorization-auto-rate.svg" alt="Line chart: automatic categorization sits around 90% before the agent rollout, then climbs to 99-100% after.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Share of categorizations a human had to correct</h2>
+    <article class="chart-card">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Video</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">SVG</button>
+        </div>
+        <span class="chart-path">video/categorization-manual-corrections.mp4</span>
+        <a class="button primary" href="video/categorization-manual-corrections.mp4" download="categorization-manual-corrections.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/categorization-manual-corrections.mp4" data-href="video/categorization-manual-corrections.mp4" data-dl="categorization-manual-corrections.mp4" data-label="Download .mp4">
+          <video src="video/categorization-manual-corrections.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+        <div class="panel" hidden data-path="charts/categorization-manual-corrections.svg" data-href="charts/categorization-manual-corrections.svg" data-dl="categorization-manual-corrections.svg" data-label="Download .svg">
+          <img src="charts/categorization-manual-corrections.svg" alt="Line chart: manual correction rate is volatile on low volume before rollout, then collapses and stays under 1%.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — balance sheet: inter-entity, loan and equity accounts</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">screens/balance-sheet-activity.png &middot; real product UI</span>
+        <a class="button primary" href="screens/balance-sheet-activity.png" download="balance-sheet-activity.png">Download .png</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="screens/balance-sheet-activity.png &middot; real product UI" data-href="screens/balance-sheet-activity.png" data-dl="balance-sheet-activity.png" data-label="Download .png">
+          <img src="screens/balance-sheet-activity.png" alt="Pilot's Balance Sheet report showing Due from Entity B and C, an owner loan account, and equity accounts across six months.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — vendor categorization: the rules behind the agent</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">screens/vendor-categorization.png &middot; real product UI</span>
+        <a class="button primary" href="screens/vendor-categorization.png" download="vendor-categorization.png">Download .png</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="screens/vendor-categorization.png &middot; real product UI" data-href="screens/vendor-categorization.png" data-dl="vendor-categorization.png" data-label="Download .png">
+          <img src="screens/vendor-categorization.png"
+             alt="Pilot's Vendor Categorization page: a table of restaurant vendors mapped to expense categories, each with a behavior of Use mapping, Always ask, or Custom.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — vendor categorization: setting the behavior</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">screens/vendor-categorization-drawer.png &middot; real product UI</span>
+        <a class="button primary" href="screens/vendor-categorization-drawer.png" download="vendor-categorization-drawer.png">Download .png</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="screens/vendor-categorization-drawer.png &middot; real product UI" data-href="screens/vendor-categorization-drawer.png" data-dl="vendor-categorization-drawer.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-drawer.png"
+             alt="Pilot's Vendor Categorization page with the settings drawer open for a vendor, showing its category and the three categorization behaviors: Use mapping (recommended and selected), Always ask, and Custom.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — vendor categorization: Always ask</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">screens/vendor-categorization-always-ask.png &middot; real product UI</span>
+        <a class="button primary" href="screens/vendor-categorization-always-ask.png" download="vendor-categorization-always-ask.png">Download .png</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="screens/vendor-categorization-always-ask.png &middot; real product UI" data-href="screens/vendor-categorization-always-ask.png" data-dl="vendor-categorization-always-ask.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-always-ask.png" alt="Pilot's Vendor Categorization drawer with the Always ask behavior selected.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — vendor categorization: Custom instructions</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">screens/vendor-categorization-custom.png &middot; real product UI</span>
+        <a class="button primary" href="screens/vendor-categorization-custom.png" download="vendor-categorization-custom.png">Download .png</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="screens/vendor-categorization-custom.png &middot; real product UI" data-href="screens/vendor-categorization-custom.png" data-dl="vendor-categorization-custom.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-custom.png" alt="Pilot's Vendor Categorization drawer with Custom selected, revealing a free-text field for categorization instructions.">
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chart-block">
+    <h2 class="chart-title">Walkthrough — vendor categorization: the flow</h2>
+    <article class="chart-card">
+      <div class="chart-card-head">
+        <span class="chart-path">video/vendor-categorization-flow.mp4</span>
+        <a class="button primary" href="video/vendor-categorization-flow.mp4" download="vendor-categorization-flow.mp4">Download .mp4</a>
+      </div>
+      <div class="chart-card-body">
+        <div class="panel" data-path="video/vendor-categorization-flow.mp4" data-href="video/vendor-categorization-flow.mp4" data-dl="vendor-categorization-flow.mp4" data-label="Download .mp4">
+          <video src="video/vendor-categorization-flow.mp4" controls autoplay loop muted playsinline preload="auto"></video>
+        </div>
+      </div>
+    </article>
+  </section>
+
+</div>
+
+<script>
+  // Tabs swap which panel is visible and repoint the head's path label and
+  // download button at that panel's asset. Video in a hidden panel is paused so
+  // several cards don't play at once.
+  for (const card of document.querySelectorAll('.chart-card')) {
+    const tabs = [...card.querySelectorAll('.tab')];
+    if (!tabs.length) continue;
+    const panels = [...card.querySelectorAll('.panel')];
+    const path = card.querySelector('.chart-path');
+    const dl = card.querySelector('.button.primary');
+
+    tabs.forEach((tab, i) => tab.addEventListener('click', () => {
+      tabs.forEach((t, j) => {
+        t.classList.toggle('tab-active', i === j);
+        t.setAttribute('aria-selected', i === j ? 'true' : 'false');
+      });
+      panels.forEach((p, j) => {
+        p.hidden = i !== j;
+        const v = p.querySelector('video');
+        if (v && i !== j) v.pause();
+        if (v && i === j) v.play().catch(() => {});
+      });
+      const p = panels[i];
+      path.textContent = p.dataset.path;
+      dl.href = p.dataset.href;
+      dl.download = p.dataset.dl;
+      dl.textContent = p.dataset.label;
+    }));
+  }
+</script>
+</body>
+</html>
