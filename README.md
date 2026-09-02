@@ -26,7 +26,8 @@ buttons, or take the files directly from the folders below.
 ### Screens
 
 `screens/*-panel.png` are the side panel on its own, with the page background
-removed. The others are the full page.
+removed — useful if you want to composite it over something else. On the preview
+page each of those sits behind a **Panel only** tab next to the full-page shot.
 
 ## Notes for editing
 

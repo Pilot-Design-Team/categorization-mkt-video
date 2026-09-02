@@ -167,6 +167,9 @@
   }
   .chart-card-body img { width: 100%; max-width: 1240px; height: auto; display: block; }
   .chart-card-body video { width: 100%; max-width: 1240px; height: auto; display: block; }
+  /* The isolated side panel is portrait (2320x3600). Sized by width it would be
+     ~1900px tall and dominate the page, so constrain it by height instead. */
+  .panel-portrait img { width: auto; max-width: 100%; max-height: 760px; }
   .chart-card + .chart-card { margin-top: var(--space-sm); }
 
   @media (max-width: 720px) {
@@ -340,7 +343,11 @@
   <section class="chart-block">
     <h2 class="chart-title">Walkthrough — vendor categorization: setting the behavior</h2>
     <article class="chart-card">
-      <div class="chart-card-head">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Full page</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">Panel only</button>
+        </div>
         <span class="chart-path">screens/vendor-categorization-drawer.png &middot; real product UI</span>
         <a class="button primary" href="screens/vendor-categorization-drawer.png" download="vendor-categorization-drawer.png">Download .png</a>
       </div>
@@ -349,13 +356,20 @@
           <img src="screens/vendor-categorization-drawer.png"
              alt="Pilot's Vendor Categorization page with the settings drawer open for a vendor, showing its category and the three categorization behaviors: Use mapping (recommended and selected), Always ask, and Custom.">
         </div>
+        <div class="panel panel-portrait" hidden data-path="screens/vendor-categorization-drawer-panel.png &middot; side panel only" data-href="screens/vendor-categorization-drawer-panel.png" data-dl="vendor-categorization-drawer-panel.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-drawer-panel.png" alt="Drawer open, Use mapping selected — side panel only, page background removed.">
+        </div>
       </div>
     </article>
   </section>
   <section class="chart-block">
     <h2 class="chart-title">Walkthrough — vendor categorization: Always ask</h2>
     <article class="chart-card">
-      <div class="chart-card-head">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Full page</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">Panel only</button>
+        </div>
         <span class="chart-path">screens/vendor-categorization-always-ask.png &middot; real product UI</span>
         <a class="button primary" href="screens/vendor-categorization-always-ask.png" download="vendor-categorization-always-ask.png">Download .png</a>
       </div>
@@ -363,19 +377,29 @@
         <div class="panel" data-path="screens/vendor-categorization-always-ask.png &middot; real product UI" data-href="screens/vendor-categorization-always-ask.png" data-dl="vendor-categorization-always-ask.png" data-label="Download .png">
           <img src="screens/vendor-categorization-always-ask.png" alt="Pilot's Vendor Categorization drawer with the Always ask behavior selected.">
         </div>
+        <div class="panel panel-portrait" hidden data-path="screens/vendor-categorization-always-ask-panel.png &middot; side panel only" data-href="screens/vendor-categorization-always-ask-panel.png" data-dl="vendor-categorization-always-ask-panel.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-always-ask-panel.png" alt="Always ask selected — side panel only, page background removed.">
+        </div>
       </div>
     </article>
   </section>
   <section class="chart-block">
     <h2 class="chart-title">Walkthrough — vendor categorization: Custom instructions</h2>
     <article class="chart-card">
-      <div class="chart-card-head">
+      <div class="chart-card-head has-tabs">
+        <div class="tabs" role="tablist">
+          <button class="tab tab-active" role="tab" aria-selected="true" data-panel="0">Full page</button>
+          <button class="tab" role="tab" aria-selected="false" data-panel="1">Panel only</button>
+        </div>
         <span class="chart-path">screens/vendor-categorization-custom.png &middot; real product UI</span>
         <a class="button primary" href="screens/vendor-categorization-custom.png" download="vendor-categorization-custom.png">Download .png</a>
       </div>
       <div class="chart-card-body">
         <div class="panel" data-path="screens/vendor-categorization-custom.png &middot; real product UI" data-href="screens/vendor-categorization-custom.png" data-dl="vendor-categorization-custom.png" data-label="Download .png">
           <img src="screens/vendor-categorization-custom.png" alt="Pilot's Vendor Categorization drawer with Custom selected, revealing a free-text field for categorization instructions.">
+        </div>
+        <div class="panel panel-portrait" hidden data-path="screens/vendor-categorization-custom-panel.png &middot; side panel only" data-href="screens/vendor-categorization-custom-panel.png" data-dl="vendor-categorization-custom-panel.png" data-label="Download .png">
+          <img src="screens/vendor-categorization-custom-panel.png" alt="Custom selected with the instructions field — side panel only, page background removed.">
         </div>
       </div>
     </article>
