@@ -1,10 +1,28 @@
-# Categorization — marketing video assets
+# Meridian — marketing video assets
 
-Chart and product assets for the Meridian **Categorization** video, in Meridian
-brand style. Open `index.html` in a browser to preview everything with download
-buttons, or take the files directly from the folders below.
+Video, chart and product assets for Meridian marketing, one collection per
+feature. `index.html` is the homepage linking to each collection's page, where
+everything previews with download buttons.
 
-## What's here
+| page | collection |
+|---|---|
+| `custom-checklists/index.html` | **Custom Checklists** — files in `custom-checklists/video/` |
+| `categorization/index.html` | **Categorization** — files in `video/`, `charts/` and `screens/` at the root |
+
+`posters/` holds the cover image for each collection on the homepage.
+
+## Custom Checklists
+
+| file | length | what it shows |
+|---|---|---|
+| `custom-checklists-01-create.mp4` | 31.1s | Building a checklist in the checklist editor |
+| `custom-checklists-02-assign-and-customize.mp4` | 31.4s | Assigning a checklist to a client and customizing it |
+| `custom-checklists-03-client-level-steps.mp4` | 24.1s | Steps that belong to one client only |
+| `custom-checklists-04-checklists-and-meridian-ai.mp4` | 14.1s | Using a client's checklist with Meridian AI |
+
+All four are H.264, 1920&times;1080.
+
+## Categorization
 
 | folder | contents |
 |---|---|
@@ -12,7 +30,7 @@ buttons, or take the files directly from the folders below.
 | `charts/` | The same diagrams as standalone `.svg`, for stills or re-animation |
 | `screens/` | Screenshots of the real product UI, PNG at 2&times; |
 
-### Videos
+### Categorization videos
 
 | file | length | what it shows |
 |---|---|---|
@@ -23,7 +41,7 @@ buttons, or take the files directly from the folders below.
 | `categorization-prepaid-amortization.mp4` | 19.6s | An annual software renewal booked as a prepaid and released monthly |
 | `vendor-categorization-flow.mp4` | 10.0s | Setting how a vendor's transactions get categorized |
 
-### Screens
+### Categorization screens
 
 `screens/*-panel.png` are the side panel on its own, with the page background
 removed — useful if you want to composite it over something else. On the preview
